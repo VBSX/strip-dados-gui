@@ -18,7 +18,7 @@ class MyWidget(QtWidgets.QWidget):
         #config of the window
         self.setStyleSheet("padding :15px;background-color: #00008b;color: #FFFFFF ")
         self.setWindowIcon(QtGui.QIcon(filter_icon_path))
-        self.setWindowTitle('Password Generator')
+        self.setWindowTitle('Strip Dados')
         self.resize(400, 200)
 
 
@@ -32,8 +32,11 @@ class MyWidget(QtWidgets.QWidget):
         self.text_mode_title = QtWidgets.QPushButton("Colocar em modo titulo!", clicked=self.make_mode_title)
         self.button_git = QtWidgets.QPushButton('Visite Meu Github', clicked=self.open_git_on_web)
         
-        self.text_raw.setStyleSheet("background-color: #008b8b;color: #000000")
+        # self.text_raw.setStyleSheet("background-color: #008b8b;color: #000000")
         self.text_raw.setStyleSheet("background-color: #FFFFFF;color: #000000")
+        
+        self.text_mode_title.setStyleSheet("background-color: #008b8b;color: #000000")
+        self.text_filtrade.setStyleSheet("background-color: #008b8b;color: #000000")
         
         self.note_of_text.setStyleSheet("background-color: #008b8b;color: #000000")
         
@@ -81,8 +84,7 @@ class MyWidget(QtWidgets.QWidget):
             clip = QGuiApplication.clipboard()
             clip.clear()
             clip.setText(text)
-            self.show_dialog('O Conteúdo foi copiado para a area de transferência')
-        
+            self.show_dialog('O Conteúdo foi copiado para a area de transferência')    
             
     def make_mode_title(self):
         text = self.text_raw.text()
@@ -94,23 +96,17 @@ class MyWidget(QtWidgets.QWidget):
             clip.setText(text_mode_title)
             self.show_dialog('O Conteúdo foi copiado para a area de transferência')      
     
-    def title_mode(self, text):
-        
-        
+    def title_mode(self, text):   
         nome_modo_titulo = text.title()
         return nome_modo_titulo           
         
     def show_dialog(self, text):
         QtWidgets.QMessageBox.about(self, 'DIALOG', text)
         
-        
     def open_git_on_web(self):
         webbrowser.open_new_tab(
         'https://github.com/vbsx'
         )
-
-
-
 
 class PathHandle():
 
